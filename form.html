@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dizi Öneri Formu</title>
+  <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+
+  <h2>Dizi Öneri Formu</h2>
+  <form id="diziForm">
+    <ul>
+      <li><a href="index.html">Ana Sayfa</a></li>
+    </ul>
+    
+    <label for="ad">Ad:</label><br>
+    <input type="text" id="ad" name="ad"><br><br>
+
+    <label for="email">E-posta:</label><br>
+    <input type="email" id="email" name="email"><br><br>
+
+    <label for="dizi">Önerdiğiniz Dizi:</label><br>
+    <input type="text" id="dizi" name="dizi"><br><br>
+
+    <label for="tur">Dizi Türü:</label><br>
+    <select id="tur" name="tur">
+      <option>Bilim Kurgu</option>
+      <option>Dram</option>
+      <option>Aksiyon</option>
+      <option>Komedi</option>
+    </select><br><br>
+
+    <label for="platform">İzlediğiniz Platform:</label><br>
+    <select id="platform" name="platform">
+      <option>Netflix</option>
+      <option>Amazon Prime</option>
+      <option>BluTV</option>
+      <option>Diğer</option>
+    </select><br><br>
+
+    <label for="karakter">Favori Karakter:</label><br>
+    <input type="text" id="karakter" name="karakter"><br><br>
+
+    <label for="yorum">Yorumunuz:</label><br>
+    <textarea id="yorum" name="yorum" rows="4" cols="40"></textarea><br><br>
+
+    <label for="puan">1-10 Arası Puan Verin:</label><br>
+    <input type="number" id="puan" name="puan" min="1" max="10"><br><br>
+
+    Dizi bitti mi?<br>
+    <input type="radio" id="evet" name="bitis" value="Evet">
+    <label for="evet">Evet</label><br>
+    <input type="radio" id="hayir" name="bitis" value="Hayır">
+    <label for="hayir">Hayır</label><br><br>
+
+    <input type="checkbox" id="onay" name="onay">
+    <label for="onay">Verdiğim bilgilerin saklanmasını kabul ediyorum.</label><br><br>
+
+    <input type="submit" value="Gönder">
+  </form>
+
+  <script>
+    document.getElementById("diziForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+
+      const formData = {
+        ad: document.getElementById("ad").value,
+        email: document.getElementById("email").value,
+        dizi: document.getElementById("dizi").value,
+        tur: document.getElementById("tur").value,
+        platform: document.getElementById("platform").value,
+        karakter: document.getElementById("karakter").value,
+        yorum: document.getElementById("yorum").value,
+        puan: document.getElementById("puan").value,
+        bitis: document.querySelector('input[name="bitis"]:checked')?.value || "Belirtilmedi",
+        onay: document.getElementById("onay").checked ? "Evet" : "Hayır"
+      };
+
+      const query = new URLSearchParams(formData).toString();
+      window.location.href = `sonuc.html?${query}`;
+    });
+  </script>
+
+</body>
+</html>
+
+
+
