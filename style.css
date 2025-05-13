@@ -1,0 +1,142 @@
+/* Genel Sayfa Stilleri */
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #f0f4f8;
+}
+
+header {
+  background-color: #b91c1c; /* kırmızı */
+  color: white;
+  padding: 10px;
+  text-align: center;
+  font-size: 22px;
+  font-weight: bold;
+}
+
+/* navbar bölümü */
+nav {
+  background-color: #fef08a; /* Sarı renk */
+  padding: 10px;
+  text-align: center;
+}
+
+nav a {
+  color: black; /* Siyah yazı rengi */
+  margin: 0 10px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 16px;
+}
+
+nav a:hover {
+  text-decoration: underline;
+}
+
+
+footer {
+  background-color: #b91c1c; /* kırmızı */
+  color: white;
+  padding: 8px;
+  text-align: center;
+  font-size: 14px;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+/* Form Stilleri */
+
+form {
+  max-width: 600px;
+  margin: 60px auto;
+  background-color: white;
+  padding: 30px;
+  border-radius: 16px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  text-align: left;
+}
+
+label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: #333;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="number"],
+select,
+textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 15px;
+  font-family: 'Segoe UI', sans-serif;
+  box-sizing: border-box;
+}
+
+textarea {
+  resize: vertical;
+}
+
+input[type="radio"],
+input[type="checkbox"] {
+  margin-right: 8px;
+}
+
+input[type="submit"] {
+  background-color: #b91c1c;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+input[type="submit"]:hover {
+  background-color: #9a1515;
+}
+
+/* Oyun Alanı Stilleri */
+
+#gameArea {
+  position: relative;
+  width: 300px;
+  height: 300px;
+  margin: 20px auto;
+  background-color: white;
+  border: 2px solid #000;
+  box-sizing: border-box;
+}
+
+#player, #enemy {
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  border-radius: 5px;
+}
+
+#player {
+  background-color: #22c55e; /* yeşil */
+  left: 10px;
+  top: 10px;
+}
+
+#enemy {
+  background-color: #ef4444; /* kırmızı */
+  left: 200px;
+  top: 200px;
+}
+
+/* Bu kısmı diğer sayfa öğelerinin üzerine yazmaması için daha belirginleştirdik. */
+#gameArea, #player, #enemy {
+  z-index: 10;
+}

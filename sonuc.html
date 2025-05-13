@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <title>Form Sonuçları</title>
+  <link rel="stylesheet" href="style.css"> <!-- Stil dosyasını dahil ediyoruz -->
+</head>
+<body>
+
+  <header>
+    <h1>Dizi Öneri Sonuçları</h1>
+  </header>
+
+  <nav>
+    <a href="index.html">Ana Sayfa</a>
+    <a href="hakkinda.html">Hakkında</a>
+    <a href="oyun.html">Icardi-zi Evreni</a>
+    <a href="tablo.html">Dizi Tablosu</a>
+    <a href="form.html">Dizi Önerisi</a>
+    <a href="lost.html">Lost</a>
+    <a href="breaking-bad.html">Breaking Bad</a>
+    <a href="game-of-thrones.html">Game of Thrones</a>
+    <a href="prison-break.html">Prison Break</a>
+    <a href="dark.html">Dark</a>
+  </nav>
+
+  <main>
+           <h2>Gönderdiğiniz Bilgiler</h2>
+   
+    <br>
+
+    <ul>
+      <li><strong>Ad:</strong> <span id="ad"></span></li>
+      <li><strong>Email:</strong> <span id="email"></span></li>
+      <li><strong>Dizi:</strong> <span id="dizi"></span></li>
+      <li><strong>Tür:</strong> <span id="tur"></span></li>
+      <li><strong>Platform:</strong> <span id="platform"></span></li>
+      <li><strong>Favori Karakter:</strong> <span id="karakter"></span></li>
+      <li><strong>Yorum:</strong> <span id="yorum"></span></li>
+      <li><strong>Puan:</strong> <span id="puan"></span></li>
+      <li><strong>Dizi Bitti mi?:</strong> <span id="bitis"></span></li>
+      <li><strong>Onay Verildi mi?:</strong> <span id="onay"></span></li>
+    </ul>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Icardi-zi</p>
+  </footer>
+
+  <script>
+    // URL'deki parametreleri alıyoruz
+    const params = new URLSearchParams(window.location.search);
+
+    const alanlar = ["ad", "email", "dizi", "tur", "platform", "karakter", "yorum", "puan", "bitis", "onay"];
+
+    alanlar.forEach(key => {
+      document.getElementById(key).textContent = params.get(key) || "Yok"; // Eğer değer yoksa "Yok" yazsın
+    });
+  </script>
+</body>
+</html>

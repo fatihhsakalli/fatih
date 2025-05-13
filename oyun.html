@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Kutudan Kaç - Icardi-zi Oyunu</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <header>
+        <h1>Kutudan</h1>
+      </header>
+      <nav>
+        <a href="index.html">Ana Sayfa</a>
+        <a href="hakkinda.html">Hakkında</a>
+        <a href="oyun.html">Icardi-zi Evreni</a>
+        <a href="tablo.html">Dizi Tablosu</a>
+        <a href="form.html">Dizi Önerisi</a>
+        <a href="lost.html">Lost</a>
+        <a href="breaking-bad.html">Breaking Bad</a>
+        <a href="game-of-thrones.html">Game of Thrones</a>
+        <a href="prison-break.html">Prison Break</a>
+        <a href="dark.html">Dark</a>
+      </nav>
+  </header>
+
+  <main>
+    <h2>Kutulardan Kaç!</h2>
+    <p>WASD ya da ok tuşlarıyla karakterini hareket ettir. Diğer kutuya çarparsan yandın!</p>
+
+    <div id="gameArea">
+      <div id="player"></div>
+      <div id="enemy"></div>
+    </div>
+    <p id="status"></p>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Icardi-zi</p>
+  </footer>
+
+  <script>
+    const player = document.getElementById("player");
+    const enemy = document.getElementById("enemy");
+    const statusText = document.getElementById("status");
+
+    let px = 10, py = 10;
+    let ex = 200, ey = 200;
+    let gameOver = false;
+
+    document.addEventListener("keydown", (e) => {
+      if (gameOver) return;
+
+      const step = 10;
+      if (e.key === "ArrowUp" || e.key === "w") py -= step;
+      if (e.key === "ArrowDown" || e.key === "s") py += step;
+      if (e.key === "ArrowLeft" || e.key === "a") px -= step;
+      if (e.key === "ArrowRight" || e.key === "d") px += step;
+
+      player.style.left = px + "px";
+      player.style.top = py + "px";
+
+      checkCollision();
+    });
+
+    function moveEnemy() {
+      if (gameOver) return;
+      ex += Math.floor(Math.random() * 11) - 5;
+      ey += Math.floor(Math.random() * 11) - 5;
+
+      enemy.style.left = ex + "px";
+      enemy.style.top = ey + "px";
+
+      checkCollision();
+    }
+
+    function checkCollision() {
+      const pRect = player.getBoundingClientRect();
+      const eRect = enemy.getBoundingClientRect();
+
+      if (
+        pRect.left < eRect.right &&
+        pRect.right > eRect.left &&
+        pRect.top < eRect.bottom &&
+        pRect.bottom > eRect.top
+      ) {
+        statusText.innerText = "💀 GAME OVER! Kutuyla çarpıştın.";
+        gameOver = true;
+      }
+    }
+
+    setInterval(moveEnemy, 500);
+  </script>
+</body>
+</html>
